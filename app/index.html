@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Ledger — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: official names, descriptions and grades, a cited guide for each, a platinum roadmap, missable flags, and a checklist saved in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <h1>Leonida Trophy Ledger</h1>
+    <p class="lede">Every one of the 55 trophies, with its official name, description and grade as
+    PlayStation publishes them, a guide in our own words that names its sources, a roadmap
+    to the platinum, and a checklist that lives in your browser. No account, no network,
+    no Rockstar artwork — just the list and the work.</p>
+    <div class="progress" id="progress" aria-live="polite">
+      <div class="progress-numbers"><span id="earnedCount">0</span> of 55 earned
+        &middot; <span id="earnedPct">0%</span> &middot; platinum
+        <span id="platinumState">not yet earned</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-grades" id="gradeCounts"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Guide sections">
+  <button class="tab active" data-view="tracker" type="button">Tracker</button>
+  <button class="tab" data-view="roadmap" type="button">Roadmap to Platinum</button>
+  <button class="tab" data-view="missable" type="button">Missable trophies</button>
+  <button class="tab" data-view="sources" type="button">Sources</button>
+</nav>
+
+<section class="controls" id="controls">
+  <label class="search">Search
+    <input id="search" type="search" placeholder="Trophy name or description…" autocomplete="off">
+  </label>
+  <div class="filters" role="group" aria-label="Filter by kind">
+    <button class="chip active" data-kind="all" type="button">All 55</button>
+    <button class="chip" data-kind="story" type="button">Story</button>
+    <button class="chip" data-kind="missable" type="button">Missable</button>
+    <button class="chip" data-kind="collectibles" type="button">Collectibles</button>
+    <button class="chip" data-kind="activities" type="button">Activities</button>
+    <button class="chip" data-kind="online" type="button">Online</button>
+  </div>
+  <label class="toggle"><input id="spoilerToggle" type="checkbox"> Hide story spoilers
+    <span class="hint">story names &amp; descriptions stay hidden until earned</span></label>
+  <div class="io">
+    <button id="exportBtn" type="button">Export progress</button>
+    <button id="importBtn" type="button">Import progress</button>
+    <input id="importFile" type="file" accept=".json,application/json" hidden>
+    <button id="resetBtn" type="button" class="quiet">Reset</button>
+  </div>
+  <p class="status" id="status" aria-live="polite"></p>
+</section>
+
+<main>
+  <section id="view-tracker" class="view">
+    <div class="tracker-grid">
+      <ul class="trophy-list" id="trophyList"></ul>
+      <aside class="detail" id="detail" aria-live="polite">
+        <p class="detail-empty">Select a trophy to read its guide and its sources.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Roadmap to the platinum</h2>
+    <p class="view-intro">Built from the official descriptions and PowerPyx's roadmap
+    (difficulty 4/10, about 200 hours, one playthrough, no mission replay, free-roam after
+    the story). Work the stages in order; every trophy below is filed under the stage
+    where you earn it.</p>
+    <div id="roadmap"></div>
+  </section>
+
+  <section id="view-missable" class="view" hidden>
+    <h2>Missable trophies</h2>
+    <p class="view-intro">Only one trophy in the whole list is reported as potentially
+    missable. Everything else can be earned after the story in free-roam — PowerPyx is
+    explicit about that, and it is why the platinum needs only one playthrough.</p>
+    <div id="missableList"></div>
+    <h3>Save habits that protect the run</h3>
+    <ul class="advice">
+      <li>Keep a manual save at the start and end of every chapter (15 manual slots plus 1 autosave). There is no mission replay.</li>
+      <li>Do Lucia's balcony meditation in Chapter 1, then keep that Chapter 1 save until Positive Mental Attitude pops.</li>
+      <li>Do not use cheats on your trophy save — cheats disable trophies and saving.</li>
+      <li>Optional missions with an hourglass icon are time-sensitive, but they do not matter for trophies: there are far more than the 100 the checklist wants.</li>
+    </ul>
+  </section>
+
+  <section id="view-sources" class="view" hidden>
+    <h2>Sources</h2>
+    <p class="view-intro">Every guide in this ledger is written in our own words. The facts
+    it rests on are cited beside each trophy; the list below is the full source sheet.</p>
+    <div id="sourceList"></div>
+    <h3>What we do not claim</h3>
+    <ul class="advice">
+      <li>Four hidden trophies — In The Beginning…, Bad Luck, I Guess, The Truth Is Out There and Ten Pin — have no confirmed unlock method at launch. This guide says so plainly instead of guessing.</li>
+      <li>Exact locations beyond what PowerPyx publishes are not restated here; its location guides are linked as sources.</li>
+      <li>Nothing here was played by us: the guides are built from the official descriptions and the cited guides, and they say where a fact comes from.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Trophy Ledger — an unofficial, open-source fan guide. Grand Theft Auto and
+  GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar logo, artwork,
+  box art or game screenshots. Trophy names and descriptions are shown as PlayStation
+  publishes them. Works offline: it loads only its own files and saves your checklist
+  in this browser's localStorage.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
