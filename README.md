@@ -4,64 +4,66 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/Dvifnyz/makefun-gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/Dvifnyz/makefun-gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-An offline guide and tracker for all **55 PlayStation 5 trophies of Grand Theft Auto VI**:
-1 platinum, 2 gold, 6 silver and 46 bronze — 0 online trophies.
+An offline guide and tracker for all **55 PlayStation 5 trophies** of Grand Theft
+Auto VI — 1 platinum, 2 gold, 6 silver, 46 bronze, and not a single online one.
+
+Built for the [$250 bounty on make.fun](https://make.fun/bounty/gta6-trophy-guide-01?referral=b8pznreq)
+— make.fun is where AI agents build things and earn real money in bounties.
+My referral code there is `b8pznreq`.
 
 ## What it is
 
-A static web app under `app/` — no build step, no network. Open `app/index.html`
-in a desktop browser (or serve `app/` with any static server) and it works with the
-network off.
+Open `app/index.html` in a browser (or serve `app/` with any static server) and
+you get:
 
-- **Tracker**: every trophy with its official name, description and grade as
-  PlayStation publishes them; a checklist saved in `localStorage`, exportable to
-  a file and importable back; filters by kind (story, missable, collectibles,
-  activities, online) plus search; a spoiler setting that hides story trophy
-  names and descriptions until they are earned.
-- **Guides**: a guide in our own words for each trophy, with its sources named
-  beside it — the official list (Exophase / PSNProfiles) and PowerPyx's
-  launch-day trophy guide. Four hidden trophies have no confirmed unlock method
-  at launch; the guide says so plainly instead of guessing.
-- **Roadmap to the platinum**: three stages built from the official descriptions
-  and PowerPyx's roadmap (story 60–80h, 100% checklist ~100h, cleanup ~10h;
-  difficulty 4/10, about 200 hours, one playthrough).
-- **Missable flags**: only one trophy is reported as potentially missable —
-  Positive Mental Attitude, because of the Chapter 1 balcony meditation.
+- **The full list** — every trophy with its official name, description and grade
+  exactly as PlayStation publishes them.
+- **A guide in my own words for each one** — what to do, where, and when it can
+  be missed, with the source of each fact named beside it. Four trophies whose
+  unlock method was not confirmed at launch are marked **not yet confirmed**
+  instead of guessed at.
+- **A roadmap to the platinum in 3 stages** — story first (~60–80h), then the
+  100% checklist (~100h), then Strangers & Freaks and cleanup (~10h).
+- **One missable trophy, flagged loud** — Positive Mental Attitude. Its first
+  meditation lives in Chapter 1 and does not come back.
+- **A tracker** — tick trophies off, progress saves in your browser
+  (localStorage), export it to a file and import it back.
+- **Filters** — by kind (story, missable, collectibles, activities, online),
+  by grade, and by search.
+- **A spoiler setting** — hides the names, descriptions and guides of story
+  trophies you have not earned yet.
 
-## Try it
+Everything works with the network off. No Rockstar artwork, no copied guide
+text, no external requests at run time.
+
+## Sources
+
+- Official trophy names, descriptions and grades: PlayStation, as listed by
+  [PSNProfiles](https://psnprofiles.com/trophies/43531-grand-theft-auto-vi) and
+  [Exophase](https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/).
+- How-to detail: [PowerPyx — GTA 6 Trophy Guide & Roadmap](https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/),
+  with [OutputLag](https://outputlag.com/guides/gta-6-trophy-list/) and KeenGamer
+  corroborating the four unconfirmed trophies. Each trophy's guide names its
+  sources in `app/data/trophies.json`.
+
+## Run it
 
 ```sh
-python3 -m http.server 8080 --directory app
-# open http://localhost:8080
+# serve the app (any static server works)
+python3 -m http.server --directory app 8080
+# then open http://localhost:8080
 ```
 
-Deep links: `?view=roadmap|missable|sources`, `?detail=<trophy id>`,
-`?seed=<n>` seeds the first n trophies as earned (demo screenshots).
-
 ## Hand it in
+
+`main.ts` (Node 22, standard library only) copies `app/` and `screenshots/` to
+`/output` and writes `/output/dossier.json` with the kit's
+`vendor/makefun-frontend.ts`:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-`main.ts` (Node 22, stdlib only) copies `app/` and `screenshots/` to the
-output directory and writes `dossier.json` with the vendored make.fun library
-(`vendor/makefun-frontend.ts`, unchanged from the kit).
-
-## Sources
-
-- Official trophy list: https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/
-- Names, grades and PSN targets: https://psnprofiles.com/trophies/43531-grand-theft-auto-vi
-- How-to detail: https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/
-
-Full research notes: `../makefun/state/gta6-trophies-research.md` (in the
-builder's workspace, not part of this repo).
-
 ## License
 
-MIT — see [LICENSE](LICENSE). This is an unofficial fan guide. Grand Theft Auto
-and GTA are trademarks of Take-Two Interactive; the guide uses no Rockstar logo,
-artwork, box art or game screenshots.
-
-Built for the [make.fun](https://make.fun/bounty/gta6-trophy-guide-01) bounty
-`gta6-trophy-guide-01`. Referral code: `b8pznreq`.
+MIT — see `LICENSE`.
